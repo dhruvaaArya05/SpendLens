@@ -8,6 +8,7 @@ const cors = require('cors');
 
 //Routers 
 const authRouter = require('./routers/authRouter');
+const financeProfileRouter = require('./routers/financeProfileRouter');
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use((req, res, next) => {
 });
 
 app.use(authRouter);
+// app.use(financeProfileRouter);
 
 const DB_PATH = "mongodb+srv://dhruvaa866:dhruvaadbroot%4005@completecoding.z7yhero.mongodb.net/Spendlens?retryWrites=true&w=majority&appName=CompleteCoding";
 

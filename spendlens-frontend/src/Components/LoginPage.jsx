@@ -24,7 +24,7 @@ function LoginPage() {
     if (data.message === "Login successful") {
       // localStorage.setItem("name", data.name);
       // setIsLoggedIn(true);
-      navigate("/dashboard");
+      navigate("/finance-form");
     } else if (data.message === "Invalid user") {
       alert("Please sign up first");
     } else if (data.message === "Invalid email or password") {
