@@ -35,6 +35,22 @@ function Header() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  async function handleLogout() {
+    const response = await fetch("http://localhost:4000/api/auth/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const data = await response.json();
+    console.log("Logout response:", data);
+    if (data.message === "Logout successful") {
+      navigate("/");
+    }
+  }
+
+
   return <nav className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between items-center h-16">
@@ -53,7 +69,7 @@ function Header() {
           <div className="ml-10 flex items-baseline space-x-8">
             <a onClick={() => navigate('/dashboard')}
               className="cursor-pointer text-gray-900 dark:text-white font-medium border-b-2 border-transparent hover:border-blue-500 transition-colors duration-200">Overview</a>
-            <a href="#"
+            <a onClick={() => navigate('/transactions')}
               className=" cursor-pointer text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium border-b-2 border-transparent hover:border-blue-500 transition-colors duration-200">Transactions</a>
             <a href="#"
               className="text-gray-500 cursor-pointer dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium border-b-2 border-transparent hover:border-blue-500 transition-colors duration-200">Budgets</a>
@@ -121,7 +137,7 @@ function Header() {
                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                   Settings
                 </a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <a onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                   Sign out
                 </a>
               </div>

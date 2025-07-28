@@ -83,3 +83,15 @@ exports.postSignup = [
     });
   }
 ]
+
+exports.postLogout = (req, res, next) => {
+  console.log("Logging out user");
+  req.session.destroy((err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: "Server error" });
+    }
+    res.clearCookie("connect.sid");
+    res.status(200).json({ message: "Logout successful" });
+  });
+}

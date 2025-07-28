@@ -5,6 +5,7 @@ import SignupPage from './Components/SignupPage';
 import Dashboard from './Components/Dashboard';
 import FinanceForm from './Components/FinanceForm';
 import AnalysisPage from './Components/AnalysisPage';
+import TransactionForm from './Components/TransactionForm';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/finance-form" element={<FinanceForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/analysis" element={<AnalysisPage />} />
+        <Route path='/transactions' element={<TransactionForm />} />
       </Routes>
     </div>
   );

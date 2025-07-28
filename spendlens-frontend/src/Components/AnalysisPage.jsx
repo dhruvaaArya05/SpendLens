@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import Header from './Header';
+import Footer from './Footer';
 
 function AnalysisPage() {
   const [timePeriod, setTimePeriod] = useState('Weekly');
@@ -271,6 +272,7 @@ function AnalysisPage() {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }
